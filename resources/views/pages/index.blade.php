@@ -22,7 +22,7 @@
                         <div class="card h-100">
                         @foreach($races as $race)
                         @if($loop->first)
-                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem"> Still avalaiable tickets: {{$race->capacity}}</div>
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem"> Still avalaiable tickets: {{$race->capacity-$res}}</div>
                         @endif
                         @endforeach
                             <!-- Product image-->
@@ -47,7 +47,7 @@
                         <div class="card h-100">
                         @foreach($races as $race)
                         @if($loop->first)
-                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Still avalaiable tickets: {{$race->capacity}}</div>
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem"> Still avalaiable tickets: {{$race->capacity-$res2}}</div>
                         @endif
                         @endforeach
                             <!-- Product image-->
@@ -71,7 +71,7 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                         @foreach($races as $race)
-                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Still avalaiable tickets: {{$race->capacity}}</div>
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem"> Still avalaiable tickets: {{$race->capacity-$res3}}</div>
                         @endforeach
                             <!-- Sale badge-->
                             <!-- Product image-->
@@ -179,8 +179,8 @@
                     
         </section>
         <!-- Footer-->
-        <footer class="bg-dark py-4 fixed-bottom">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Jakub Anděl 2021</p></div>
+        <footer class="py-4 bg-dark fixed-bottom">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; F1 Ticket Booking 2021</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

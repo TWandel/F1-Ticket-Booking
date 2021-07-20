@@ -106,7 +106,7 @@ Log in to buy your ticket.
         </section>
         <!-- Footer-->
         <footer class="py-4 bg-dark fixed-bottom">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Jakub Anděl 2021</p></div>
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; F1 Ticket Booking 2021</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>¨

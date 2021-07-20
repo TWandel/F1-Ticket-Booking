@@ -1,48 +1,47 @@
 body {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  background-color: #f5f5f5;
 }
 
 .calendar .calendar-header {
-  background-color: #CC251F;
-  color: white;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
   border: 0;
 }
 
-.calendar .calendar-header .year-title:hover,
-.calendar .calendar-header .prev:hover,
-.calendar .calendar-header .next:hover{
-  background: rgba(255, 255, 255, 0.2);
+.calendar .calendar-header .year-title {
+  font-size: 18px;
 }
 
-.calendar .calendar-header .year-neighbor {
-  color: inherit;
-  opacity: 0.7;
+.calendar .calendar-header .year-title:not(.year-neighbor):not(.year-neighbor2) {
+  border-bottom: 2px solid red;
 }
 
-.calendar .calendar-header .year-neighbor2 {
-  color: inherit;
-  opacity: 0.4;
-}
-
-.calendar .month-container {
-  height: 210px;
+.calendar .months-container .month-container {
+  height: 260px;
+  margin-bottom: 25px;
 }
 
 .calendar table.month {
+  background-color: white;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
   height: 100%;
 }
 
-.calendar table.month .month-title {
-  background-color: #CC251F;
+.calendar table.month th.month-title {
+  background-color: red;
   color: white;
-  padding: 5px;
+  padding: 12px;
+  font-weight: 400;
 }
 
-.calendar table.month .day-header {
-  padding-top: 8px;
-  border-bottom: 2px solid #CC251F;
+.calendar table.month th.day-header {
+  padding-top: 10px;
+  color: #CDCDCD;
+  font-weight: 400;
+  font-size: 12px;
 }
 
 .calendar table.month td.day .day-content {
-  padding: 5px 8px;
+  padding: 8px;
+  border-radius: 100%;
 }

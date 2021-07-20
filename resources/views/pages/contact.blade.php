@@ -96,15 +96,34 @@
                             </div>
                         </form>
                     </div>
+                    
                 </div>
+                <div class="form-group text-center">
+                <i class="bi bi-envelope" style="font-size: 2rem; color: red;"></i> N° 2 St James's Market, London, SW1Y 4AH, England.
+                            </div>
+                            <div class="form-group text-center">
+                <i class="bi bi-telephone-fill" style="font-size: 2rem; color: red;"></i> +44 20 3984 9372
+                            </div>
+                            <div class="form-group text-center">
+                <i class="bi bi-forward-fill" style="font-size: 2rem; color: red;"></i>j_andel@utb.cz
+                            </div>
+                
+                
             </div>
+           
         </div>
         
+        
 </div>
+
+
+
+
+<div class="mapouter"><div class="gmap_canvas"><iframe class="gmap_iframe" width="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=N° 2 St James's Market, London, SW1Y 4AH, England.&amp;t=k&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"></iframe><a href="https://www.fridaynightfunkin.net/friday-night-funkin-mods-fnf-play-online/">Friday Night Funkin Mods</a></div><style>.mapouter{position:relative;text-align:right;width:100%;height:400px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:400px;}.gmap_iframe {height:400px!important;}</style></div>
         </section>
         <!-- Footer-->
-        <footer class="bg-dark py-4 fixed-bottom">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Jakub Anděl 2021</p></div>
+        <footer class="py-4 bg-dark fixed-bottom">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; F1 Ticket Booking 2021</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

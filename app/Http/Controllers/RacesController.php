@@ -18,7 +18,10 @@ class RacesController extends Controller
     public function index()
     {
         $races = Races::all();
-        return view('pages.index', compact('races'));
+        $res = DB::table('reservations')->where('race_id',1)->count();
+        $res2 = DB::table('reservations')->where('race_id',2)->count();
+        $res3 = DB::table('reservations')->where('race_id',3)->count();
+        return view('pages.index', compact('races','res','res2','res3'));
     }
 
     /**
