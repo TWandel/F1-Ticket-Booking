@@ -21,16 +21,27 @@
                     <div class="col-md-6">
                         <img class="card-img-top mb-5 mb-md-0" src="{{URL::asset('/img/belgium_track.jpg')}}" alt="Belgium GP - Track" /></div>
                     <div class="col-md-6">
-                        <h1 class="display-5 fw-bolder">Formula 1 Heineken Dutch Grand Prix 2021</h1>
+                        <h1 class="display-5 fw-bolder">Formula 1 Rolex Belgian Grand Prix 2021</h1>
                         <div class="fs-5 mb-5">
                             <span>€20.00 - €2000.00</span>
                         </div>
                         <p class="lead">The 2021 Belgium Grand Prix is scheduled to take place from August 27 to August 29. Prices are per person and valid for the entire race weekend.</p>
                         <div class="d-flex">
+                            
                         
                         @auth
+
+                        <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" value="1" name="id">
+                        <input type="hidden" value="haha" name="name">
+                        <input type="hidden" value="20" name="price">
+                        <input type="hidden" value="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=989&q=80"  name="image">
+                        <input type="hidden" value="1" name="quantity">
+                        <button class="px-4 py-2 text-white bg-blue-800 rounded">Add To Cart</button>
+                    </form>
                         <select class="form-select" aria-label="Options">
-                        <option selected>Choose category</option>
+                        <option value="">Choose category</option>
                         <option value="20">Bronze (Kids) - €20</option>
                         <option value="150">Bronze (Adult) - €150</option>
                         <option value="200">Silver (Kids) - €200</option>
@@ -41,10 +52,10 @@
                         </select>
                         <br>
                         <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                            <a class="btn btn-outline-dark flex-shrink-0" href="{{ url('/cart') }}" type="button">
                                 <i class="bi-cart-fill me-1"></i>
                                 Add to cart
-                            </button>
+                            </a>
 @else
 <div class="alert alert-danger" role="alert">
 Log in to buy your ticket.

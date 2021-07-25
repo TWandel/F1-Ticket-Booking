@@ -40,10 +40,10 @@
                         </select>
                         <br>
                             <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                            <a class="btn btn-outline-dark flex-shrink-0" href="{{ url('/cart') }}"  type="button">
                                 <i class="bi-cart-fill me-1"></i>
                                 Add to cart
-                            </button>
+                            </a>
                             @else
                             <div class="alert alert-danger" role="alert">
 Log in to buy your ticket.

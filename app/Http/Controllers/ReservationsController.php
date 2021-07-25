@@ -37,6 +37,7 @@ class ReservationsController extends Controller
     public function store(Request $request)
     {
         //
+
     }
 
     /**
