@@ -41,8 +41,11 @@ class LoginController extends Controller
     }
 
     public function logout() {
-        Auth::logout();
-        return redirect()->back();
+        $userId = auth()->user()->id;
+        \Cart::clear();
+        \Cart::session($userId)->clear();
+        Auth::logout(); 
+        return redirect('/');
       }
       
 }

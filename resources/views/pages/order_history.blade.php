@@ -10,7 +10,7 @@
                               <p class="text-green-800">{{ $message }}</p>
                           </div>
                       @endif
-                        <h3 class="text-3xl text-bold">Cart List</h3>
+                        <h3 class="text-3xl text-bold">Order history</h3>
                       <div class="flex-1">
                         <table class="w-full text-sm lg:text-base" cellspacing="0">
                           <thead>
@@ -35,7 +35,7 @@
                               </td>
                               <td>
                                 <a href="#">
-                                  <p class="mb-2 md:ml-4">{{ $item->name }} ({{ $item->attributes->tier }} - {{$item->attributes->type}})</p>                   
+                                  <p class="mb-2 md:ml-4">{{ $item->name }} ({{ $item->attributes->tier }} - {{$item->attributes->type}})</p>                      
                                 </a>
                               </td>
                               <td class="justify-center mt-6 md:justify-end md:flex">

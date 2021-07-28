@@ -26,7 +26,7 @@
 </div>
         </section>
         <!-- Footer-->
-        <footer class="py-4 bg-dark fixed-bottom">
+        <footer class="py-4 bg-dark">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; F1 Ticket Booking 2021</p></div>
         </footer>
         <!-- Bootstrap core JS-->

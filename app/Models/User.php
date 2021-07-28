@@ -28,6 +28,11 @@ class User extends \TCG\Voyager\Models\User
         'country',
     ];
 
+    public function reservations()
+{
+  return $this->hasMany('App\Reservations');
+}
+
     /**
      * The attributes that should be hidden for arrays.
      *

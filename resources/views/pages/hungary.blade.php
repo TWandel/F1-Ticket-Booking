@@ -14,8 +14,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     </head>
     <body>
-        <!-- Product section-->
-        <section class="py-5">
+    <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6">
@@ -26,34 +25,57 @@
                             <span>€25 - €1000</span>
                         </div>
                         <p class="lead">The 2021 Hungarian Grand Prix is scheduled to take place from July 30 to August 1. Prices are per person and valid for the entire race weekend.</p>
-                        <div class="d-flex">
+                        <div class="d-flex flex-column">
                         @auth
-                        <select class="form-select" aria-label="Options">
-                        <option selected>Choose category</option>
-                        <option value="25">Bronze (Kids) - €25</option>
-                        <option value="120">Bronze (Adult) - €120</option>
-                        <option value="25">Silver (Kids) - €25</option>
-                        <option value="205">Silver (Adult) - €205</option>
-                        <option value="25">Gold (Kids) - €25</option>
-                        <option value="360">Gold (Adult) - €360</option>
-                        <option value="1000">VIP - €1000</option>
+                        <form action="{{ route('cart.store') }}" method="POST">
+                        @csrf
+                        <div class="p-2">
+                        <select id="tier" name="tier" class="form-select calculate" aria-label="Tier" required>
+                        <option value="1" data-price="20" selected>Bronze</option>
+                        <option value="2" data-price="200">Silver</option>
+                        <option value="3"  data-price="250">Gold</option>
+                        <option value="4" data-price="1850">VIP</option>
                         </select>
-                        <br>
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <a class="btn btn-outline-dark flex-shrink-0" href="{{ url('/cart') }}"  type="button">
+                        <input name="name" value="Formula 1 Magyar Nagydíj 2021 (30 JUL - 01 AUG)" type="hidden">
+                        <input name="race" value="1" type="hidden">
+                        <input type="hidden" id ="tieR" value=""  name="tieR">
+                        <input type="hidden" id ="typE" value=""  name="typE">
+                        <input type="hidden" value="https://cdn.countryflags.com/thumbs/hungary/flag-400.png"  name="image">
+</div>
+<div class="p-2">
+                        <select id="type" name="type"  class="form-select calculate" aria-label="Type" required>
+                        <option value="1" data-price="0" selected>Kids</option>
+                        <option value="2" data-price="150">Adults</option>
+                        </select>
+</div>
+<div class="p-2">
+<div class="d-flex justify-content-center mt-3">
+                        <input oninput="quant()" id ="quantity" name="quantity" class="form-control text-center me-3" id="inputQuantity" type="num" value="1" maxlength="2"  min="1" max="99" required  style="max-width: 3rem"/>
+</div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <button class="btn btn-outline-dark flex-shrink-0 text-center" type="submit">
                                 <i class="bi-cart-fill me-1"></i>
                                 Add to cart
-                            </a>
-                            @else
-                            <div class="alert alert-danger" role="alert">
+</button>
+</div>
+<div class="d-flex justify-content-end mt-5">
+<h1>€</h1><h1 name="price" id ="item-price">20</h1>
+<input id="total" type="hidden" name="totalz" value="">
+</div>
+</form>
+</div>
+@else
+<div class="alert alert-danger" role="alert">
 Log in to buy your ticket.
 </div>
 @endauth
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        <!-- Product section-->
         <!-- Related items section-->
         <section class="py-5 bg-light">
             <div class="container px-4 px-lg-5 mt-5">
@@ -110,6 +132,56 @@ Log in to buy your ticket.
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>¨
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+function quant() {
+    var quantity = document.getElementById("quantity").value;
+    if(isNaN(quantity))
+    return 0;
+    else
+    return quantity;
+}
+var basePrice = 0;
+document.getElementById("total").value = document.getElementById("item-price").innerHTML;
+var tier = $("#tier>option:selected").text();
+    document.getElementById("tieR").value = tier;
+    var type = $("#type>option:selected").text();
+    document.getElementById("typE").value = type;
+
+
+$(".calculate").change(function () {
+    
+    newPrice = basePrice;
+    $(".calculate option:selected").each(function () {
+        newPrice += parseInt($(this).data('price'));
+        
+        console.log(typeof newPrice);
+    });
+
+    var t = document.getElementById("tier");
+  if(t.value == "4"){
+    newPrice = 1000;
+    newPrice *=quant();
+    $("#item-price").html(newPrice);
+    var tier = $("#tier>option:selected").text();
+    document.getElementById("tieR").value = tier;
+    var type = $("#type>option:selected").text();
+    document.getElementById("typE").value = type;
+    document.getElementById("total").value = document.getElementById("item-price").innerHTML;
+   }
+   else
+   {
+    newPrice *=quant();
+    $("#item-price").html(newPrice);
+    var tier = $("#tier>option:selected").text();
+    document.getElementById("tieR").value = tier;
+    var type = $("#type>option:selected").text();
+    document.getElementById("typE").value = type;
+    document.getElementById("total").value = document.getElementById("item-price").innerHTML;
+   }
+    
+});
+</script>
     </body>
 </html>
 @endsection

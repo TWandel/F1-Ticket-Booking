@@ -98,7 +98,7 @@
                     </div>
                     
                 </div>
-                <div class="form-group text-center">
+                <div class="form-group text-center mt-3">
                 <i class="bi bi-envelope" style="font-size: 2rem; color: red;"></i> N° 2 St James's Market, London, SW1Y 4AH, England.
                             </div>
                             <div class="form-group text-center">

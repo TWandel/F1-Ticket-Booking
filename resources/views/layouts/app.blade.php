@@ -73,7 +73,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="{{ route('cart.list') }}">
                                         My orders
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -94,7 +94,7 @@
                     </ul>
                     @auth
                     <form class="d-flex"> 
-                        <a class="btn btn-outline-dark" href="{{ url('/cart') }}" type="submit">
+                        <a class="btn btn-outline-dark" href="{{ route('cart.list') }}" type="submit">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">{{ Cart::getTotalQuantity()}}</span>

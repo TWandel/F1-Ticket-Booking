@@ -26,36 +26,45 @@
                             <span>€20.00 - €2000.00</span>
                         </div>
                         <p class="lead">The 2021 Belgium Grand Prix is scheduled to take place from August 27 to August 29. Prices are per person and valid for the entire race weekend.</p>
-                        <div class="d-flex">
-                            
-                        
+                        <div class="d-flex flex-column">
                         @auth
-
-                        <form action="{{ route('cart.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('cart.store') }}" method="POST">
                         @csrf
-                        <input type="hidden" value="1" name="id">
-                        <input type="hidden" value="haha" name="name">
-                        <input type="hidden" value="20" name="price">
-                        <input type="hidden" value="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=989&q=80"  name="image">
-                        <input type="hidden" value="1" name="quantity">
-                        <button class="px-4 py-2 text-white bg-blue-800 rounded">Add To Cart</button>
-                    </form>
-                        <select class="form-select" aria-label="Options">
-                        <option value="">Choose category</option>
-                        <option value="20">Bronze (Kids) - €20</option>
-                        <option value="150">Bronze (Adult) - €150</option>
-                        <option value="200">Silver (Kids) - €200</option>
-                        <option value="400">Silver (Adult) - €400</option>
-                        <option value="250">Gold (Kids) - €250</option>
-                        <option value="400">Gold (Adult) - €400</option>
-                        <option value="2000">VIP - €2000</option>
+                        <div class="p-2">
+                        <select id="tier" name="tier" class="form-select calculate" aria-label="Tier" required>
+                        <option value="1" data-price="20" selected>Bronze</option>
+                        <option value="2" data-price="200">Silver</option>
+                        <option value="3"  data-price="250">Gold</option>
+                        <option value="4" data-price="1850">VIP</option>
                         </select>
-                        <br>
-                        <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <a class="btn btn-outline-dark flex-shrink-0" href="{{ url('/cart') }}" type="button">
+                        <input name="name" value="Formula 1 Rolex Belgian Grand Prix 2021 (27 - 29 AUG)" type="hidden">
+                        <input name="race" value="2" type="hidden">
+                        <input type="hidden" id ="tieR" value=""  name="tieR">
+                        <input type="hidden" id ="typE" value=""  name="typE">
+                        <input type="hidden" value="https://cdn.countryflags.com/thumbs/belgium/flag-400.png"  name="image">
+</div>
+<div class="p-2">
+                        <select id="type" name="type"  class="form-select calculate" aria-label="Type" required>
+                        <option value="1" data-price="0" selected>Kids</option>
+                        <option value="2" data-price="150">Adults</option>
+                        </select>
+</div>
+<div class="p-2">
+<div class="d-flex justify-content-center mt-3">
+                        <input oninput="quant()" id ="quantity" name="quantity" class="form-control text-center me-3" id="inputQuantity" type="num" value="1" maxlength="2"  min="1" max="99" required  style="max-width: 3rem"/>
+</div>
+                        <div class="d-flex justify-content-center mt-3">
+                            <button class="btn btn-outline-dark flex-shrink-0 text-center" type="submit">
                                 <i class="bi-cart-fill me-1"></i>
                                 Add to cart
-                            </a>
+</button>
+</div>
+<div class="d-flex justify-content-end mt-5">
+<h1>€</h1><h1 name="price" id ="item-price">20</h1>
+<input id="total" type="hidden" name="totalz" value="">
+</div>
+</form>
+</div>
 @else
 <div class="alert alert-danger" role="alert">
 Log in to buy your ticket.
@@ -123,6 +132,57 @@ Log in to buy your ticket.
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>¨
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script type="text/javascript">
+function quant() {
+    var quantity = document.getElementById("quantity").value;
+    if(isNaN(quantity))
+    return 0;
+    else
+    return quantity;
+}
+var basePrice = 0;
+document.getElementById("total").value = document.getElementById("item-price").innerHTML;
+var tier = $("#tier>option:selected").text();
+    document.getElementById("tieR").value = tier;
+    var type = $("#type>option:selected").text();
+    document.getElementById("typE").value = type;
+
+
+$(".calculate").change(function () {
+    
+    newPrice = basePrice;
+    $(".calculate option:selected").each(function () {
+        newPrice += parseInt($(this).data('price'));
+    });
+
+    var t = document.getElementById("tier");
+  if(t.value == "4"){
+    newPrice = 2000;
+    newPrice *=quant();
+    $("#item-price").html(newPrice);
+    document.getElementById("total").value = document.getElementById("item-price").innerHTML;
+    var tier = $("#tier>option:selected").text();
+    document.getElementById("tieR").value = tier;
+    var type = $("#type>option:selected").text();
+    document.getElementById("typE").value = type;
+    document.getElementById("total").value = document.getElementById("item-price").innerHTML;
+   }
+   else
+   {
+    newPrice *=quant();
+    var data = $('#price').html();
+    $("#item-price").html(newPrice);
+    document.getElementById("total").value = document.getElementById("item-price").innerHTML;
+    var tier = $("#tier>option:selected").text();
+    document.getElementById("tieR").value = tier;
+    var type = $("#type>option:selected").text();
+    document.getElementById("typE").value = type;
+    document.getElementById("total").value = document.getElementById("item-price").innerHTML;
+   }
+    
+});
+</script>
     </body>
 </html>
 @endsection
