@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Reservations;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Auth;
+use Illuminate\Database\Eloquent\Collection;
 
 class ReservationsController extends Controller
 {
@@ -16,6 +19,56 @@ class ReservationsController extends Controller
     {
         $res = Reservations::all();
         return view('pages.index', compact('reservations'));
+    }
+
+    public function index2()
+    {
+        $userId = Auth::id();
+        $racename = DB::table('reservations')
+            ->join('races', 'reservations.race_id', '=', 'races.id')
+            ->select('races.name as rn')
+            ->where('reservations.user_id',$userId)
+            ->pluck('rn')
+            ->toArray();
+
+        $tier = DB::table('reservations')
+            ->join('category_r_s', 'reservations.category_id', '=', 'category_r_s.id')
+            ->select('category_r_s.name as crs')
+            ->where('reservations.user_id',$userId)
+            ->pluck('crs')
+            ->toArray();
+
+        $type = DB::table('reservations')
+            ->join('type', 'reservations.type_id', '=', 'type.id')
+            ->select('type.name as t')
+            ->where('reservations.user_id',$userId)
+            ->pluck('t')
+            ->toArray();
+
+        $count = DB::table('reservations')
+            ->select('reservations.count as c')
+            ->where('reservations.user_id',$userId)
+            ->pluck('c')
+            ->toArray();
+
+        $price = DB::table('reservations')
+            ->select('reservations.price as p')
+            ->where('reservations.user_id',$userId)
+            ->pluck('p')
+            ->toArray();
+
+            $data = collect();
+            $data->racename = $racename;
+            $data->tier = $tier;
+            $data->type = $type;
+            $data->count = $count;
+            $data->price = $price;
+
+            $count = DB::table('reservations')->where('user_id',$userId)->count();
+            $count = $count-1; 
+
+
+        return view('pages.order_history', compact('data','count'));
     }
 
     /**

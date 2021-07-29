@@ -51,7 +51,7 @@
 </div>
 <div class="p-2">
 <div class="d-flex justify-content-center mt-3">
-                        <input oninput="quant()" id ="quantity" name="quantity" class="form-control text-center me-3" id="inputQuantity" type="num" value="1" maxlength="2"  min="1" max="99" required  style="max-width: 3rem"/>
+                        <input id ="quantity" name="quantity" class="form-control text-center me-3" id="inputQuantity" type="num" value="1" maxlength="2"  min="1" max="99" required  style="max-width: 3rem"/>
 </div>
                         <div class="d-flex justify-content-center mt-3">
                             <button class="btn btn-outline-dark flex-shrink-0 text-center" type="submit">
@@ -60,7 +60,7 @@
 </button>
 </div>
 <div class="d-flex justify-content-end mt-5">
-<h1>€</h1><h1 name="price" id ="item-price">20</h1>
+<h1>€</h1><h1 name="price" id ="item-price">20</h1><h1>/ticket</h1>
 <input id="total" type="hidden" name="totalz" value="">
 </div>
 </form>
@@ -134,13 +134,6 @@ Log in to buy your ticket.
         <script src="js/scripts.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.js"></script>
 <script type="text/javascript">
-function quant() {
-    var quantity = document.getElementById("quantity").value;
-    if(isNaN(quantity))
-    return 0;
-    else
-    return quantity;
-}
 var basePrice = 0;
 document.getElementById("total").value = document.getElementById("item-price").innerHTML;
 var tier = $("#tier>option:selected").text();
@@ -159,7 +152,6 @@ $(".calculate").change(function () {
     var t = document.getElementById("tier");
   if(t.value == "4"){
     newPrice = 2000;
-    newPrice *=quant();
     $("#item-price").html(newPrice);
     document.getElementById("total").value = document.getElementById("item-price").innerHTML;
     var tier = $("#tier>option:selected").text();
@@ -170,8 +162,6 @@ $(".calculate").change(function () {
    }
    else
    {
-    newPrice *=quant();
-    var data = $('#price').html();
     $("#item-price").html(newPrice);
     document.getElementById("total").value = document.getElementById("item-price").innerHTML;
     var tier = $("#tier>option:selected").text();

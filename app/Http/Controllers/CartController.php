@@ -37,7 +37,6 @@ class CartController extends Controller
 
         return redirect()->route('cart.list');
     }
-
     public function updateCart(Request $request)
     {
         \Cart::update(
@@ -75,6 +74,7 @@ class CartController extends Controller
     public function buy()
     {
         
+        
         $content = \Cart::isEmpty();
         if($content == true)
         {
@@ -91,6 +91,8 @@ class CartController extends Controller
 
         }
         \Cart::clear();
+
+        
         
         session()->flash('success', 'Thank you!');
 

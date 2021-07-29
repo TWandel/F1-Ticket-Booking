@@ -73,7 +73,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('cart.list') }}">
+                                <a class="dropdown-item" href="{{ url('/order_history') }}">
                                         My orders
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"

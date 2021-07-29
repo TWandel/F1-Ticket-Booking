@@ -94,6 +94,9 @@
                   </div>
             </div>
         </main>
+        <footer class="py-4 bg-dark fixed-bottom">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; F1 Ticket Booking 2021</p></div>
+        </footer>
         <script src="{{ asset('js/input.js') }}" defer></script>
         <script>
     var msg = '{{Session::get('alert')}}';

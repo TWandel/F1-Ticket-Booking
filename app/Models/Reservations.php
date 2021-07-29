@@ -22,4 +22,10 @@ class Reservations extends Model
 {
   return $this->hasMany('App\Races');
 }
+
+public function category()
+{
+    return $this->hasMany('App\CategoryR', 'category_id');
+}
+
 }
